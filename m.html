@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Spam Call Awareness | CSP Project</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: 'Poppins', sans-serif;
+  background: linear-gradient(to right, #283E51, #485563, #232526);
+  color: #f0f3fa;
+  background-attachment: fixed;
+  scroll-behavior: smooth;
+}
+
+.parallax {
+  background-image: url('img1.jpg');
+  height: 30vh;
+  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+}
+.parallax::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: rgba(22, 28, 54, 0.55); /* overlay for contrast */
+  z-index: 1;
+  border-radius: 0 0 32px 32px;
+}
+.parallax h1, .parallax p {
+  position: relative;
+  z-index: 2;
+}
+.parallax h1 {
+  font-size: 3rem;
+  background: white;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: bold;
+  text-shadow: 0 3px 18px #1a1a1a80, 0 0 22px #ba2d0b56;
+  animation: fadeInDown 2s ease;
+  margin-bottom: 0.6rem;
+}
+body {
+    background-image: url('img2.jpg');
+    background-size: cover;          /* Ensures the image covers all screen sizes */
+    background-repeat: no-repeat;    /* Prevents repeating */
+    background-position: center;     /* Keeps the image centered */
+    background-attachment: fixed;    /* Makes background static as user scrolls */
+}
+.section-card {
+    background: rgba(24, 41, 95, 0.92); /* Semi-transparent for contrast */
+    color: #fff;
+    border-radius: 15px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.13);
+}
+.parallax p {
+  font-size: 1.2rem;
+  color: #f7fafc;
+  max-width: 800px;
+  margin-top: 1rem;
+  text-shadow: 0 1px 12px #0008;
+  animation: fadeInUp 2s ease;
+}
+@keyframes fadeInDown {
+  from {opacity: 0; transform: translateY(-30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+@keyframes fadeInUp {
+  from {opacity: 0; transform: translateY(30px);}
+  to {opacity: 1; transform: translateY(0);}
+}
+
+.menu-btn 
+{
+  position: fixed;
+  top: 22px;
+  right: 24px;
+  font-size: 1.8rem;
+  padding: 12px 20px;
+  background: linear-gradient(to right, #ff512f, #dd2476);
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  z-index: 1001;
+  color: #fff;
+  font-weight: bold;
+  box-shadow: 0 1px 12px #dd2476aa;
+  transition: transform 0.2s, background 0.2s;
+}
+.menu-btn:hover {
+  transform: scale(1.1) rotate(-4deg);
+  background: linear-gradient(to right, #ffd700, #ff7e5f);
+  color: #333;
+}
+
+.nav-menu {
+  transition: opacity 0.4s, transform 0.28s;
+  opacity: 0;
+  transform: translateY(-12px) scale(0.98);
+  display: none;
+  position: fixed;
+  top: 70px;
+  right: 24px;
+  background: rgba(20, 22, 30, 0.96);
+  padding: 12px 18px;
+  border-radius: 15px;
+  z-index: 1000;
+  flex-direction: column;
+  box-shadow: 0 0 18px #ffcf0090;
+}
+.nav-menu.show {
+  opacity: 1;
+  transform: scale(1) translateY(0);
+  display: flex;
+}
+.nav-menu a {
+  background: linear-gradient(to right, #304ffe, #1976d2);
+  margin: 9px 0;
+  padding: 12px 16px;
+  text-decoration: none;
+  color: #fff;
+  border-radius: 8px;
+  font-weight: 600;
+  text-align: center;
+  letter-spacing: 1px;
+  box-shadow: 0 1px 8px #1976d230;
+  transition: 0.27s;
+  font-size: 1.07rem;
+}
+.nav-menu a:hover {
+  background: linear-gradient(to right,lightgreen, lightgreen);
+  color: #232526;
+  transform: scale(1.05);
+  box-shadow: 0 0 11px #ffcf009a;
+}
+
+.section {
+  transition: box-shadow 0.32s, transform 0.32s, opacity 0.7s;
+  animation: fadeinup 1.1s;
+  box-shadow: 0 2px 18px 8px #7782f855, 0 6px 36px 0 #ffd70020;
+  border: 1px solid #3949ab35;
+  opacity: 0.95;
+  padding: 2.1rem;
+  margin: 2.4rem auto;
+  max-width: 900px;
+  background: rgba(19, 24, 54, 0.93);
+  border-radius: 22px;
+  backdrop-filter: blur(8px);
+  display: none;
+}
+.section:hover {
+  box-shadow: 0 10px 32px #304ffe90, 0 1.5px 8px #ff7e5f70;
+  opacity: 1;
+  transform: translateY(-3px) scale(1.025);
+}
+@keyframes fadeinup {
+  from { opacity: 0; transform: translateY(30px);}
+  to { opacity: 1; transform: none;}
+}
+.home-section {
+  display: block;
+}
+.section h2 {
+  color: #ffd700;
+  margin-bottom: 1.2rem;
+  text-shadow: 0 0 10px #304ffe66;
+  font-size: 2.1rem;
+  letter-spacing: .5px;
+}
+.section h2::first-letter {
+  font-size: 2.7rem;
+}
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(175px,1fr));
+  gap: 1.2rem;
+  margin: 1.5rem 0;
+}
+.gallery img {
+  width: 100%;
+  border-radius: 16px;
+  box-shadow: 0 4px 22px #fded7f60;
+  transition: transform 0.32s, box-shadow 0.24s;
+}
+.gallery img:hover {
+  transform: scale(1.06);
+  box-shadow: 0 8px 32px #ffd700cc;
+}
+
+iframe {
+  width: 100%;
+  border: none;
+  border-radius: 12px;
+  margin-top: 1rem;
+  box-shadow: 0 0 14px #1976d230;
+}
+
+.quiz-result {
+  margin-top: 1rem;
+  font-weight: bold;
+  color: #ff512f;
+}
+
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 1.3rem;
+  margin-top: 2rem;
+  justify-items: center;
+}
+
+/* Team card style */
+.team-card {
+  width: 150px;                /* Slightly wider to avoid name overflow */
+  padding: 16px;
+  border-radius: 20px;
+  background: rgba(10, 10, 40, 0.7);
+  color: #ffe66e;
+  text-align: center;
+  word-break: break-word;      /* Force long words/names to wrap */
+  overflow-wrap: break-word;   /* Extra wrapping support */
+  min-height: 240px;           /* Ensure enough height */
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+/* Name and role container */
+.name-role {
+  font-size: 1em;
+  line-height: 1.3;
+  margin-top: 10px;
+  white-space: normal;         /* Allow wrapping within the box */
+}
+.member-card {
+  background: rgba(255,255,255,0.07);
+  border-radius: 16px;
+  box-shadow: 0 2px 12px #ffd70060;
+  padding: 1.1rem 0.7rem;
+  width: 140px;
+  text-align: center;
+  transition: background 0.18s, transform 0.29s;
+}
+.member-card:hover{
+  background: rgba(255,220,60,0.125);
+  transform: scale(1.06) translateY(-8px);
+}
+.member-card img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: 0.6rem;
+  box-shadow: 0 0 14px #ffd70050;
+}
+.member-card p {
+  margin: 0.4rem 0 0 0;
+  font-weight: 500;
+  color: #ffd700;
+  font-size: 1rem;
+}
+
+button[type="submit"], button, .menu-btn {
+  background: linear-gradient(to right, #304ffe, #1976d2);
+  color: #ffd700;
+  border: none;
+  border-radius: 7px;
+  padding: 13px 30px;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 1.06rem;
+  box-shadow: 0 0 12px #1976d230, 0 1px 8px #ffd70022;
+  transition: transform 0.35s, background 0.23s, color 0.18s;
+}
+button:hover, .menu-btn:hover {
+  background: linear-gradient(to right, #ffcf00, #ff512f);
+  color: #232526;
+  transform: scale(1.09);
+}
+
+input, textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 7px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1rem;
+  background: #1a2338;
+  color: #ffd700;
+}
+input:focus, textarea:focus {
+  outline: 2px solid #ffcf00;
+}
+
+footer {
+  text-align: center;
+  padding: 1.7rem;
+  background: linear-gradient(to right, #232526, #283E51);
+  color: #cccccc;
+  font-size: 1rem;
+  box-shadow: 0 -2px 14px #1976d250;
+}
+
+.chatbot-box {
+  background: rgba(0, 0, 0, 0.33);
+  padding: 23px;
+  border-radius: 18px;
+  box-shadow: 0 0 17px #304ffe50;
+  max-width: 610px;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-window {
+  height: 210px;
+  overflow-y: auto;
+  background-color: rgba(255, 255, 255, 0.095);
+  padding: 11px;
+  border-radius: 8px;
+  margin-bottom: 11px;
+  color: #fff;
+}
+  </style>
+</head>
+<body>
+
+<button class="menu-btn" onclick="toggleMenu()">☰ Menu</button>
+<div class="nav-menu" id="navMenu">
+  <a href="#" onclick="showSection('implementation')">About</a>
+  <a href="#" onclick="showSection('survey')">Survey</a>
+  <a href="#" onclick="showSection('dnd')">Solutions</a>
+  <a href="#" onclick="showSection('tips')">Tips</a>
+ 
+  <a href="#" onclick="showSection('gallery')">Gallery</a>
+  
+  <a href="#" onclick="showSection('quiz')">Quiz</a>
+  <a href="#" onclick="showSection('chatbot')">Ask our chatbot</a>
+  <a href="#" onclick="showSection('feedback')">Feedback</a>
+   <a href="#" onclick="showSection('team')">About us</a>
+</div>
+
+<div class="parallax">
+  <h1>Protecting Communities from Spam & Scam Calls</h1>
+  <p>Spam calls aren't just annoying—they're dangerous. Learn how to protect yourself, your family, and your data.</p>
+</div>
+
+<div id="homeContent">
+  <div class="section home-section" id="about">
+    <h2>📌 What is a Spam/Scam Call?</h2>
+    <p>Spam and scam calls are unwanted phone calls that aim to cheat people by pretending to be trusted organizations like banks, telecoms, or government agencies.</p>
+  <iframe height="400" src="https://www.youtube.com/embed/AX1EDrETbkY?si=bMEDqPNJxLmB5j8d" allowfullscreen></iframe>
+</div>
+  <div class="section home-section" id="impact">
+    <h2>📊 Impact in India</h2>
+    <ul>
+      <li>📱 Over 1 billion spam calls monthly</li>
+      <li>💸 Lakhs of rupees lost in KYC/lottery scams</li>
+      <li>👵 Elderly and students targeted most</li>
+    </ul>
+       <iframe height="400" src="https://www.youtube.com/embed/mRPZJlyZf_A?si=60O24BefBNUppBnM" allowfullscreen></iframe>    
+  </div>
+  <div class="section home-section" id="how">
+    <h2>🧠 How Do Scammers Operate?</h2>
+    <ul>
+      <li>🔄 Caller ID Spoofing</li>
+      <li>⚠ Threats like "Your account will be blocked!"</li>
+      <li>📂 Fake links/apps</li>
+    </ul>
+      <iframe height="400" src="https://www.youtube.com/embed/4PbLE5ale2A?si=9ZBDGWehYdFTUo4L" allowfullscreen></iframe> 
+  </div>
+  <div class="section home-section" id="objective">
+    <h2>🎯 Project Objective</h2>
+    <p>Raise awareness, educate, and equip users with safety tips through this project.</p>
+     <img src="iim.jpg" alt="Awareness in Nidadvole" height="200">
+         <img src="iim1.jpg" alt="Awareness in Nidadvole" height="200">
+           <img src="iim2.jpg" alt="Awareness in Nidadvole" height="200">
+  </div>
+</div>
+
+<div class="section" id="implementation">
+  <h2>⚙ ABOUT</h2>
+  <p><h2>About the Project</h2>
+This initiative is dedicated to raising awareness about spam and scam calls, which are a growing concern affecting people across India and worldwide. The project aims to educate users about the risks associated with fraudulent calls and messages, provide practical solutions for different types of phones, and empower users to stay protected from potential scams. Our goal is to build a safer digital environment by sharing accurate information, prevention tips, and reporting methods.
+
+<h2>About the Site</h2>
+This site is an interactive platform designed to help users understand and fight spam and scam communications. Visitors can learn the basics of spam calls, view statistics on their impact, and explore step-by-step guides to block unwanted calls and messages. Our resource sections include detailed explanations, tips, and links to essential services like the DND registry and awareness tools. The user-friendly design ensures everyone—from smartphone to keypad phone users—can access guidance and support to secure their communication.</p>
+</div>
+<div class="section" id="survey">
+  <h2>📋 Community Survey</h2>
+  <iframe src="https://forms.gle/VB9EnRWceF4shkAu7" height="600"></iframe>
+</div>
+<div class="section" id="dnd">
+  <h2>📵 DND Info</h2>
+  <p>Send SMS <strong>START 0</strong> to <strong>1909</strong> or dial 1909 to stop spam calls.</p>
+    <iframe height="400" src="https://www.youtube.com/embed/ckNDo606kUU?si=sOH3dnTVQ5JLta8F" allowfullscreen></iframe>
+ <h2>📵TrueCaller</h2>
+  <iframe height="400" src="https://www.youtube.com/embed/0azg32gtFIA?si=H1EaR5YDlQypfx1f" allowfullscreen></iframe>
+
+
+</div>
+<div class="section" id="tips">
+  
+  <section style="max-width: 600px; margin: auto; font-family: Arial, sans-serif; color: #f0f0f0; line-height: 1.6;">
+  <h2 style="color: #ffdd57; margin-bottom: 12px;">💡 Tips to Stay Safe</h2>
+  <ol style="padding-left: 20px;">
+    <li>Don't answer unknown numbers. Let calls from unrecognized numbers go to voicemail; scammers usually won't leave a message.</li>
+    <li>Hang up on suspicious calls. If a call is automated or feels off, end it immediately without engaging.</li>
+    <li>Activate Do Not Disturb (DND). Register your number for DND to block most marketing calls and spam messages.</li>
+    <li>Use your phone's blocking features. Both iPhone and Android devices allow blocking of unknown or specific numbers.</li>
+    <li>Install a reputable spam-blocking app. Apps like Truecaller or Hiya can help detect and block scam calls in real time.</li>
+    <li>Never share personal information. Do not provide sensitive data over the phone unless you are sure about the caller's identity.</li>
+    <li>Be wary of caller ID. Scammers can 'spoof' numbers to look local—never trust caller ID alone.</li>
+    <li>Don't press buttons or respond. Never press numbers or interact during a suspicious call—it confirms your number is active.</li>
+    <li>Block and report persistent spam. Manually block numbers and report spam calls to your carrier or authorities.</li>
+  </ol>
+</section>
+
+</div>
+<div class="section" id="team">
+  <h2>👥 About Us</h2>
+  <div class="team-grid">
+    <div class="member-card">
+      <img src="team1.jpg" alt="B. Uma Satya Sai" />
+      <p>B. Uma Satya Sai<br>(Team Leader)</p>
+    </div>
+    <div class="member-card">
+      <img src="team2.jpg" alt="M. Ajay Prakash" />
+      <p>M. Ajay Prakash<br> (Website Developer)</p>
+    </div>
+    <div class="member-card">
+      <img src="team3.jpg" alt="A. Ranga Prasad" />
+      <p>A. Ranga Prasad <br>(Awareness & Campaign Head)</p>
+    </div>
+    <div class="member-card">
+      <img src="team4.jpg" alt="M. Santhosh" />
+      <p>M. Santhosh <br>(Survey & Data Collection Head)</p>
+    </div>
+    <div class="member-card">
+      <img src="team5.jpg" alt="G. Nithin Bhaskar Reddy" />
+      <p>G. Nithin Bhaskar Reddy<br> (Documentation Head)</p>
+    </div>
+    <div class="member-card">
+      <img src="team6.jpg" alt="G. Uday Kiran" />
+      <p>G. Uday Kiran <br>(Research & Problem Analysis Head)</p>
+    </div>
+    <div class="member-card">
+      <img src="team7.jpg" alt="K. Surya Prakash" />
+      <p>K. Surya Prakash <br>(Technical Solutions Head)</p>
+    </div>
+  </div>
+     <br>
+  Contact us:7673997846
+  <br>Email:umasatyasaibollam@gmail.com
+  <br>Students of Sri vasavi Engineering College
+</div>
+
+</div><div class="section" id="gallery">
+  <h2>🖼 Project Gallery</h2>
+  <div class="gallery">
+      <h3>Survey By Our Team</h3>
+    <img src="sr.jpg" alt="Survey By our team">
+      <h3>Awarenessing The People</h3>
+    <img src="aw.jpg" alt="Awareness To The People">
+   
+  </div>
+</div>
+<div class="section" id="quiz">
+  <h2>🧠 Quiz</h2>
+  <p>Q1: Is it safe to share your OTP with anyone?</p>
+<input type="radio" name="q1" id="q1a"> No<br>
+<input type="radio" name="q1"> Yes<br>
+
+<p>Q2: Which app helps detect spam calls?</p>
+<input type="radio" name="q2" id="q2c"> Truecaller<br>
+<input type="radio" name="q2"> Calculator<br>
+
+<p>Q3: What is the official number to activate DND in India?</p>
+<input type="radio" name="q3" id="q3a"> 1909<br>
+<input type="radio" name="q3"> 100<br>
+
+<p>Q4: What should you do if you receive a suspicious call?</p>
+<input type="radio" name="q4" id="q4b"> Hang up and report<br>
+<input type="radio" name="q4"> Share your details<br>
+
+<p>Q5: Who is most targeted by scam calls?</p>
+<input type="radio" name="q5" id="q5c"> Elderly and students<br>
+<input type="radio" name="q5"> Gamers<br>
+
+<p>Q6: What is caller ID spoofing?</p>
+<input type="radio" name="q6" id="q6a"> Showing a fake number<br>
+<input type="radio" name="q6"> Sending repeated SMS<br>
+
+<p>Q7: What is phishing?</p>
+<input type="radio" name="q7" id="q7b"> Tricking people to give personal data<br>
+<input type="radio" name="q7"> Fishing with a rod<br>
+
+<p>Q8: Which of the following is safe behavior?</p>
+<input type="radio" name="q8" id="q8a"> Verifying unknown callers before speaking<br>
+<input type="radio" name="q8"> Sharing PIN when asked nicely<br>
+
+<p>Q9: What is the best action if a scammer asks for your UPI PIN?</p>
+<input type="radio" name="q9" id="q9c"> Report and block the number<br>
+<input type="radio" name="q9"> Send the PIN anyway<br>
+
+<p>Q10: Why are awareness campaigns important?</p>
+<input type="radio" name="q10" id="q10a"> They help people stay safe and informed<br>
+<input type="radio" name="q10"> They are just for fun<br>
+
+<br>
+<button onclick="checkQuiz()">Submit</button>
+<div class="quiz-result" id="quizResult"></div>
+
+</div>
+<div class="section" id="chatbot">
+  <h2>🤖 ChatBot</h2>
+  <div class="chatbot-box">
+    <div class="chat-window" id="chatWindow"></div>
+    <input type="text" id="userInput" placeholder="Type your message..." onkeydown="if(event.key==='Enter') sendMessage()">
+    <button onclick="sendMessage()">Send</button>
+  </div>
+</div>
+<div class="section" id="feedback">
+  <h2>💬 Feedback</h2>
+  <form onsubmit="submitFeedback(event)">
+    <label for="fname">Name:</label><br>
+    <input type="text" id="fname" required><br><br>
+    <label for="femail">Email:</label><br>
+    <input type="email" id="femail" required><br><br>
+    <label for="fmsg">Your Feedback:</label><br>
+    <textarea id="fmsg" rows="4" required></textarea><br><br>
+    <button type="submit">Submit Feedback</button>
+    <div id="feedbackResult" style="margin-top: 10px;"></div>
+  </form>
+</div>
+<footer>
+  <p>&copy; 2025 Team CSP – Spam Call Awareness</p>
+</footer>
+
+<script>
+  function toggleMenu() {
+    const menu = document.getElementById("navMenu");
+    menu.classList.toggle("show");
+  }
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(s => s.style.display = 'none');
+    document.getElementById("homeContent").style.display = 'none';
+    document.getElementById(id).style.display = 'block';
+    document.getElementById("navMenu").classList.remove("show");
+  }
+ function checkQuiz() {
+  const result = document.getElementById("quizResult");
+  let score = 0;
+
+  if (document.getElementById("q1a").checked) score++;
+  if (document.getElementById("q2c").checked) score++;
+  if (document.getElementById("q3a").checked) score++;
+  if (document.getElementById("q4b").checked) score++;
+  if (document.getElementById("q5c").checked) score++;
+  if (document.getElementById("q6a").checked) score++;
+  if (document.getElementById("q7b").checked) score++;
+  if (document.getElementById("q8a").checked) score++;
+  if (document.getElementById("q9c").checked) score++;
+  if (document.getElementById("q10a").checked) score++;
+
+  const total = 10;
+
+  if (score === total) {
+    result.textContent = `🎉 Excellent! You scored ${score}/${total}. You're fully aware!`;
+    result.style.color = "#00ff99";
+  } else if (score >= 7) {
+    result.textContent = `👍 Good job! You scored ${score}/${total}. Stay alert!`;
+    result.style.color = "#ffc107";
+  } else { function submitFeedback(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("fname").value.trim();
+  const email = document.getElementById("femail").value.trim();
+  const message = document.getElementById("fmsg").value.trim();
+  const output = document.getElementById("feedbackResult");
+
+  if (name && email && message) {
+    output.textContent = "✅ Thank you, " + name + "! Your feedback is received.";
+    output.style.color = "#00ff99";
+
+    // Clear inputs
+    document.getElementById("fname").value = "";
+    document.getElementById("femail").value = "";
+    document.getElementById("fmsg").value = "";
+  } else {
+    output.textContent = "⚠️ Please fill in all fields.";
+    output.style.color = "orange";
+  }
+}
+
+    result.textContent = `⚠️ You scored ${score}/${total}. Review the tips to improve.`;
+    result.style.color = "#ff4444";
+  }
+}
+ function sendMessage() {
+  const input = document.getElementById("userInput");
+  const chatWindow = document.getElementById("chatWindow");
+  const userText = input.value.trim();
+
+  if (!userText) return;
+
+  const userMsg = `<p><strong>You:</strong> ${userText}</p>`;
+  chatWindow.innerHTML += userMsg;
+
+  let botReply = "I'm not sure about that. Try asking something else!";
+
+  // Simple bot replies
+  if (userText.toLowerCase().includes("hello")) botReply = "Hi! How can I help you today?";
+  else if (userText.toLowerCase().includes("spam call")) botReply = "Avoid unknown calls and never share OTPs.";
+  else if (userText.toLowerCase().includes("dnd")) botReply = "Send 'START 0' to 1909 to activate DND.";
+  else if (userText.toLowerCase().includes("thank")) botReply = "You're welcome!";
+  else if (userText.toLowerCase().includes("bye")) botReply = "Bye! Stay safe from scams!";
+
+  const botMsg = `<p><strong>Bot:</strong> ${botReply}</p>`;
+  chatWindow.innerHTML += botMsg;
+
+  chatWindow.scrollTop = chatWindow.scrollHeight;
+  input.value = "";
+}
+
+ function submitFeedback(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("fname").value.trim();
+  const email = document.getElementById("femail").value.trim();
+  const message = document.getElementById("fmsg").value.trim();
+  const output = document.getElementById("feedbackResult");
+
+  if (name && email && message) {
+    output.textContent = "✅ Thank you, " + name + "! Your feedback is received.";
+    output.style.color = "#00ff99";
+
+    // Clear inputs
+    document.getElementById("fname").value = "";
+    document.getElementById("femail").value = "";
+    document.getElementById("fmsg").value = "";
+  } else {
+    output.textContent = "⚠️ Please fill in all fields.";
+    output.style.color = "orange";
+  }
+}
+
+
+
+</script>
+</body>
+</html>
